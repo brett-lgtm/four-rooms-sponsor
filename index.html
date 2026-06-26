@@ -35,7 +35,7 @@
             padding: 36px 44px; opacity: 0; pointer-events: none;
             transition: opacity 0.3s ease; text-align: center; overflow-y: auto;
         }
-        .slide.active { opacity: 1; pointer-events: auto; }
+        .slide.active { opacity: 1; pointer-events: auto; cursor: pointer; }
         .sw { background: #fff; color: #1a1a1a; }
         .sd { background: #0d1b2a; color: #fff; }
 
@@ -277,6 +277,7 @@ const sl=document.querySelectorAll('.slide'),tot=sl.length;let c=0;
 function go(n){sl[c].classList.remove('active');c=Math.max(0,Math.min(n,tot-1));sl[c].classList.add('active');document.getElementById('ct').textContent=(c+1)+' / '+tot;const dk=sl[c].classList.contains('sd');document.querySelectorAll('.arr').forEach(b=>{b.style.color=dk?'#fff':'#333';b.style.background=dk?'rgba(255,255,255,0.15)':'rgba(0,0,0,0.1)';});document.getElementById('ct').style.color=dk?'#666':'#999';document.getElementById('pb').style.display=c===0?'none':'flex';document.getElementById('nb').style.display=c===tot-1?'none':'flex';}
 function next(){go(c+1);}function prev(){go(c-1);}
 document.addEventListener('keydown',e=>{if(e.key==='ArrowRight'){e.preventDefault();next();}if(e.key==='ArrowLeft'){e.preventDefault();prev();}});
+document.querySelectorAll('.slide').forEach(s=>{s.addEventListener('click',e=>{if(e.target.tagName==='A'||e.target.tagName==='BUTTON')return;next();});});
 let tx=0;const dw=document.querySelector('.deck-wrap');dw.addEventListener('touchstart',e=>{tx=e.changedTouches[0].screenX;});dw.addEventListener('touchend',e=>{const d=tx-e.changedTouches[0].screenX;if(Math.abs(d)>50){d>0?next():prev();}});
 go(0);
 </script>
