@@ -12,8 +12,8 @@
 
         /* NAV */
         nav { display: flex; justify-content: space-between; align-items: center; padding: 20px 40px; background: #fff; border-bottom: 1px solid #eee; position: sticky; top: 0; z-index: 100; }
-        .logo { font-weight: 900; font-size: 18px; letter-spacing: 1px; }
-        .logo span { color: #2bbcb3; }
+        .logo img { height: 40px; }
+        @media (max-width: 768px) { .logo img { height: 30px; } }
         .nav-cta { background: #2bbcb3; color: #fff; padding: 12px 28px; border-radius: 6px; text-decoration: none; font-weight: 700; font-size: 14px; text-transform: uppercase; letter-spacing: 1px; transition: background 0.3s; }
         .nav-cta:hover { background: #239e96; }
 
@@ -98,9 +98,19 @@
         .brand-names { font-size: 16px; color: #888; margin-top: 8px; }
         .section-dark .brand-names { color: #aaa; }
 
+        /* EVENT PHOTO */
+        .event-photo { width: 100%; border-radius: 8px; margin: 32px 0; }
+        .photo-strip { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 12px; margin: 32px 0; }
+        .photo-strip img { width: 100%; height: 220px; object-fit: cover; border-radius: 8px; }
+        @media (max-width: 768px) { .photo-strip { grid-template-columns: 1fr; } .photo-strip img { height: 200px; } }
+
         /* FOOTER */
         footer { background: #0d1b2a; color: #aaa; padding: 40px 24px; text-align: center; font-size: 14px; }
         footer a { color: #2bbcb3; text-decoration: none; }
+        .footer-logo { margin-bottom: 16px; }
+        .footer-logo img { height: 32px; }
+        .social-links { margin: 16px 0; }
+        .social-links a { color: #2bbcb3; margin: 0 12px; text-decoration: none; font-weight: 600; font-size: 14px; }
 
         /* RESPONSIVE */
         @media (max-width: 768px) {
@@ -118,18 +128,18 @@
 
 <!-- NAV -->
 <nav>
-    <div class="logo">FOUR ROOMS <span>MASTERMIND</span></div>
+    <div class="logo"><img src="https://assets.cdn.filesafe.space/fdAqsag8cBj7Lvv6NUlk/media/69fb1b380394c9850351a1a4.svg" alt="Four Rooms Mastermind"></div>
     <a href="https://event.fourroomsmastermind.com/widget/bookings/four-rooms-intro-call" class="nav-cta">Schedule A Call</a>
 </nav>
 
 <!-- SLIDE 1: HERO -->
-<div>
+<div style="background: linear-gradient(rgba(13,27,42,0.7), rgba(13,27,42,0.7)), url('https://assets.cdn.filesafe.space/fdAqsag8cBj7Lvv6NUlk/media/68cce221eaa05893e9f425db.webp') center/cover no-repeat; color: #fff;">
     <div class="section" style="text-align: center; padding: 80px 24px;">
         <p class="eyebrow">Sponsorship Opportunities</p>
         <h1>You're About To See Something No Other Event Offers.</h1>
-        <p style="font-size: 20px; max-width: 600px; margin: 0 auto 16px;">We don't give you a booth and wish you luck.</p>
-        <p style="font-size: 20px; max-width: 600px; margin: 0 auto 16px;">We interview every attendee. We learn what they need. Then we introduce them to you.</p>
-        <p style="font-size: 22px; font-weight: 700; max-width: 600px; margin: 0 auto;">Strategically. Intentionally. Before the event even starts.</p>
+        <p style="font-size: 20px; max-width: 600px; margin: 0 auto 16px; color: #ddd;">We don't give you a booth and wish you luck.</p>
+        <p style="font-size: 20px; max-width: 600px; margin: 0 auto 16px; color: #ddd;">We interview every attendee. We learn what they need. Then we introduce them to you.</p>
+        <p style="font-size: 22px; font-weight: 700; max-width: 600px; margin: 0 auto; color: #fff;">Strategically. Intentionally. Before the event even starts.</p>
         <div class="cta-center"><a href="https://event.fourroomsmastermind.com/widget/bookings/four-rooms-intro-call" class="cta-btn">Schedule A Call With Brett</a></div>
     </div>
 </div>
@@ -145,6 +155,17 @@
         <p><strong>Every single one is a founder or C-suite. Zero salespeople. You're talking directly to the decision maker.</strong></p>
         <p>44% female. 56% male. One of the highest female attendee ratios in the industry.</p>
         <p class="highlight" style="font-size: 22px; margin-top: 24px;">1,700+ companies have walked away with partnerships, clients, and ROI.</p>
+    </div>
+</div>
+
+<!-- EVENT PHOTOS -->
+<div>
+    <div class="section" style="padding-top: 20px; padding-bottom: 20px;">
+        <div class="photo-strip">
+            <img src="https://fourroomsmastermind.com/wp-content/uploads/2026/06/DZ9A1858-4-1-scaled.jpg" alt="Four Rooms Event">
+            <img src="https://fourroomsmastermind.com/wp-content/uploads/2026/06/DZ9A1890-2-1-scaled.jpg" alt="Four Rooms Networking">
+            <img src="https://fourroomsmastermind.com/wp-content/uploads/2026/06/DZ9A2248-2-1-scaled.jpg" alt="Four Rooms Community">
+        </div>
     </div>
 </div>
 
@@ -452,7 +473,13 @@
 
 <!-- FOOTER -->
 <footer>
-    <p>Copyright &copy; 2026 Four Rooms Mastermind. All Rights Reserved.</p>
+    <div class="footer-logo"><img src="https://assets.cdn.filesafe.space/fdAqsag8cBj7Lvv6NUlk/media/69fb1b380394c9850351a1a4.svg" alt="Four Rooms Mastermind" style="filter: brightness(0) invert(1); opacity: 0.7;"></div>
+    <div class="social-links">
+        <a href="https://facebook.com/fourroomsmastermind" target="_blank">Facebook</a>
+        <a href="https://instagram.com/fourroomsmastermind/" target="_blank">Instagram</a>
+        <a href="https://linkedin.com/company/four-rooms-mastermind" target="_blank">LinkedIn</a>
+    </div>
+    <p style="margin-top: 12px;">Copyright &copy; 2026 Four Rooms Mastermind. All Rights Reserved.</p>
     <p style="margin-top: 8px;"><a href="https://fourroomsmastermind.com">fourroomsmastermind.com</a></p>
 </footer>
 
