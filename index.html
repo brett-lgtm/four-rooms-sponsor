@@ -1,0 +1,460 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sponsor Four Rooms Mastermind — San Diego 2026</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Inter', sans-serif; color: #1a1a1a; background: #fff; line-height: 1.6; }
+
+        /* NAV */
+        nav { display: flex; justify-content: space-between; align-items: center; padding: 20px 40px; background: #fff; border-bottom: 1px solid #eee; position: sticky; top: 0; z-index: 100; }
+        .logo { font-weight: 900; font-size: 18px; letter-spacing: 1px; }
+        .logo span { color: #2bbcb3; }
+        .nav-cta { background: #2bbcb3; color: #fff; padding: 12px 28px; border-radius: 6px; text-decoration: none; font-weight: 700; font-size: 14px; text-transform: uppercase; letter-spacing: 1px; transition: background 0.3s; }
+        .nav-cta:hover { background: #239e96; }
+
+        /* SECTIONS */
+        .section { max-width: 800px; margin: 0 auto; padding: 60px 24px; }
+        .section-dark { background: #0d1b2a; color: #fff; }
+        .section-dark .section { max-width: 800px; margin: 0 auto; padding: 60px 24px; }
+        .section-teal { background: #2bbcb3; color: #fff; }
+        .section-teal .section { max-width: 800px; margin: 0 auto; padding: 60px 24px; }
+        .section-light { background: #f7f8fa; }
+
+        /* TYPOGRAPHY */
+        h1 { font-size: 42px; font-weight: 900; line-height: 1.15; margin-bottom: 24px; }
+        h2 { font-size: 32px; font-weight: 800; line-height: 1.2; margin-bottom: 20px; }
+        h3 { font-size: 24px; font-weight: 700; margin-bottom: 16px; }
+        p { font-size: 18px; margin-bottom: 16px; }
+        .big-number { font-size: 72px; font-weight: 900; color: #2bbcb3; line-height: 1; margin-bottom: 8px; }
+        .section-dark .big-number { color: #2bbcb3; }
+        .highlight { color: #2bbcb3; font-weight: 700; }
+        .eyebrow { font-size: 13px; text-transform: uppercase; letter-spacing: 3px; font-weight: 700; color: #2bbcb3; margin-bottom: 12px; }
+        .section-dark .eyebrow { color: #2bbcb3; }
+
+        /* CTA BUTTON */
+        .cta-btn { display: inline-block; background: #2bbcb3; color: #fff; padding: 18px 48px; border-radius: 6px; text-decoration: none; font-weight: 800; font-size: 16px; text-transform: uppercase; letter-spacing: 1px; margin-top: 24px; transition: background 0.3s, transform 0.2s; }
+        .cta-btn:hover { background: #239e96; transform: translateY(-2px); }
+        .cta-center { text-align: center; }
+
+        /* COMPARISON */
+        .compare-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 32px; margin: 32px 0; }
+        .compare-box { padding: 28px; border-radius: 8px; }
+        .compare-box.bad { background: #f0f0f0; border: 2px solid #ddd; }
+        .compare-box.good { background: #e8f8f7; border: 2px solid #2bbcb3; }
+        .compare-box h3 { font-size: 18px; margin-bottom: 12px; }
+        .compare-box ul { list-style: none; padding: 0; }
+        .compare-box ul li { padding: 6px 0; font-size: 16px; }
+        .compare-box.bad ul li::before { content: "✗ "; color: #cc0000; font-weight: 700; }
+        .compare-box.good ul li::before { content: "✓ "; color: #2bbcb3; font-weight: 700; }
+
+        /* ROI CARDS */
+        .roi-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin: 32px 0; }
+        .roi-card { background: #fff; border: 2px solid #eee; border-radius: 8px; padding: 28px; text-align: center; }
+        .section-dark .roi-card { background: #162d44; border-color: #2bbcb3; }
+        .roi-card .company { font-size: 14px; font-weight: 600; text-transform: uppercase; letter-spacing: 2px; color: #888; margin-bottom: 4px; }
+        .section-dark .roi-card .company { color: #2bbcb3; }
+        .roi-card .industry { font-size: 13px; color: #999; margin-bottom: 12px; }
+        .roi-card .invested { font-size: 16px; margin-bottom: 4px; }
+        .roi-card .returned { font-size: 28px; font-weight: 900; color: #2bbcb3; }
+        .roi-card .multiplier { font-size: 14px; font-weight: 700; color: #1a1a1a; margin-top: 4px; }
+        .section-dark .roi-card .multiplier { color: #fff; }
+
+        /* STEPS */
+        .step { display: flex; gap: 20px; margin-bottom: 28px; align-items: flex-start; }
+        .step-number { background: #2bbcb3; color: #fff; width: 40px; height: 40px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 800; font-size: 16px; flex-shrink: 0; }
+        .step-content { flex: 1; }
+        .step-content h4 { font-size: 18px; font-weight: 700; margin-bottom: 4px; }
+        .step-content p { font-size: 16px; margin-bottom: 0; color: #555; }
+        .section-dark .step-content p { color: #ccc; }
+
+        /* TESTIMONIAL */
+        .testimonial { background: #f7f8fa; border-left: 4px solid #2bbcb3; padding: 32px; border-radius: 0 8px 8px 0; margin: 32px 0; }
+        .section-dark .testimonial { background: #162d44; }
+        .testimonial blockquote { font-size: 20px; font-style: italic; margin-bottom: 16px; line-height: 1.5; }
+        .testimonial .attribution { font-size: 14px; font-weight: 700; }
+        .testimonial .result { font-size: 16px; color: #2bbcb3; font-weight: 700; margin-top: 8px; }
+
+        /* OBJECTIONS */
+        .objection { margin-bottom: 28px; }
+        .objection .q { font-size: 18px; font-weight: 700; color: #cc0000; margin-bottom: 8px; }
+        .section-dark .objection .q { color: #ff6b6b; }
+        .objection .a { font-size: 16px; color: #555; }
+        .section-dark .objection .a { color: #ccc; }
+
+        /* CHECKLIST */
+        .checklist { list-style: none; padding: 0; }
+        .checklist li { padding: 10px 0; font-size: 17px; border-bottom: 1px solid #eee; }
+        .section-dark .checklist li { border-color: #2a3d52; }
+        .checklist li::before { content: "✓ "; color: #2bbcb3; font-weight: 700; font-size: 20px; }
+
+        /* BRANDS */
+        .brand-list { font-size: 18px; font-weight: 600; color: #555; line-height: 2; }
+        .section-dark .brand-list { color: #ccc; }
+        .brand-names { font-size: 16px; color: #888; margin-top: 8px; }
+        .section-dark .brand-names { color: #aaa; }
+
+        /* FOOTER */
+        footer { background: #0d1b2a; color: #aaa; padding: 40px 24px; text-align: center; font-size: 14px; }
+        footer a { color: #2bbcb3; text-decoration: none; }
+
+        /* RESPONSIVE */
+        @media (max-width: 768px) {
+            h1 { font-size: 28px; }
+            h2 { font-size: 24px; }
+            .big-number { font-size: 48px; }
+            .compare-grid, .roi-grid { grid-template-columns: 1fr; }
+            nav { padding: 16px 20px; }
+            .section { padding: 40px 20px; }
+            .nav-cta { padding: 10px 20px; font-size: 12px; }
+        }
+    </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+    <div class="logo">FOUR ROOMS <span>MASTERMIND</span></div>
+    <a href="https://event.fourroomsmastermind.com/widget/bookings/four-rooms-intro-call" class="nav-cta">Schedule A Call</a>
+</nav>
+
+<!-- SLIDE 1: HERO -->
+<div>
+    <div class="section" style="text-align: center; padding: 80px 24px;">
+        <p class="eyebrow">Sponsorship Opportunities</p>
+        <h1>You're About To See Something No Other Event Offers.</h1>
+        <p style="font-size: 20px; max-width: 600px; margin: 0 auto 16px;">We don't give you a booth and wish you luck.</p>
+        <p style="font-size: 20px; max-width: 600px; margin: 0 auto 16px;">We interview every attendee. We learn what they need. Then we introduce them to you.</p>
+        <p style="font-size: 22px; font-weight: 700; max-width: 600px; margin: 0 auto;">Strategically. Intentionally. Before the event even starts.</p>
+        <div class="cta-center"><a href="https://event.fourroomsmastermind.com/widget/bookings/four-rooms-intro-call" class="cta-btn">Schedule A Call With Brett</a></div>
+    </div>
+</div>
+
+<!-- SLIDE 2: WHO'S IN THE ROOM -->
+<div class="section-dark">
+    <div class="section">
+        <p class="eyebrow">Who's In The Room</p>
+        <div class="big-number">200-250</div>
+        <h2>Verified Founders Per Event</h2>
+        <p>Average business: <strong>8 figures</strong>. Every person verified their revenue before buying a ticket.</p>
+        <p>DTC brands. Info & coaching. Service providers.</p>
+        <p><strong>Every single one is a founder or C-suite. Zero salespeople. You're talking directly to the decision maker.</strong></p>
+        <p>44% female. 56% male. One of the highest female attendee ratios in the industry.</p>
+        <p class="highlight" style="font-size: 22px; margin-top: 24px;">1,700+ companies have walked away with partnerships, clients, and ROI.</p>
+    </div>
+</div>
+
+<!-- SLIDE 3: CALIBER -->
+<div>
+    <div class="section">
+        <p class="eyebrow">The Caliber Of People In This Room</p>
+        <h2>These aren't just founders. These are the people behind brands you already know.</h2>
+        <p class="brand-list">ClickFunnels. Digistore. Tushy. Midday Squares. Equinox. Snapchat.</p>
+        <p class="brand-names">Members like Miki Agrawal, Eddie Maalouf, Molly Pittman, David Bayer, JJ Virgin — just to name a few.</p>
+        <p style="margin-top: 20px;">When you sponsor this event, you're not just getting access to 200-250 founders. You're in the room with the people who built these companies.</p>
+        <p><strong>A secondary benefit of sponsoring:</strong> partnerships with people who have massive networks. The relationships you build here don't just get you clients. They get you introductions to entire ecosystems.</p>
+    </div>
+</div>
+
+<!-- SLIDE 4: SMART INVESTMENT -->
+<div class="section-teal">
+    <div class="section" style="text-align: center;">
+        <h2 style="color: #fff;">This isn't a marketing expense.</h2>
+        <p style="font-size: 24px; font-weight: 700;">It's a client acquisition machine.</p>
+        <p style="font-size: 20px;">One curated introduction can be worth more than your entire ad budget this year.</p>
+        <p style="font-size: 20px; font-weight: 700;">And we don't leave it to chance.</p>
+    </div>
+</div>
+
+<!-- SLIDE 5: COMPARISON -->
+<div>
+    <div class="section">
+        <h2>How We're Different From Every Other Event</h2>
+        <div class="compare-grid">
+            <div class="compare-box bad">
+                <h3>Other Events</h3>
+                <ul>
+                    <li>Booth in a hallway</li>
+                    <li>30-second shout out</li>
+                    <li>Name list emailed after</li>
+                    <li>Hope and pray</li>
+                </ul>
+            </div>
+            <div class="compare-box good">
+                <h3>Four Rooms</h3>
+                <ul>
+                    <li>We identify your ideal clients</li>
+                    <li>We introduce you directly</li>
+                    <li>Curated dinners, expert tables, breakout rooms</li>
+                    <li>One at booth, one being introduced. Always.</li>
+                </ul>
+            </div>
+        </div>
+        <p style="text-align: center; font-size: 20px; font-weight: 700;">You're not outside hoping. You're inside connecting.</p>
+    </div>
+</div>
+
+<!-- SLIDE 6: EARLY ROI -->
+<div class="section-light">
+    <div class="section">
+        <p class="eyebrow">The Part Nobody Tells You</p>
+        <h2>Sponsors Start Making Money Before The Event.</h2>
+        <p>The earlier you sponsor, the earlier we connect you.</p>
+        <p>Someone in our community says "I need a payment processor" — if you're our payment sponsor, we connect them to you. <strong>That day.</strong></p>
+        <p>You get exclusive access to 1-on-1 opportunities that match your target audience.</p>
+        <p style="font-weight: 700; font-size: 20px;">Our sponsors make money before anyone sets foot in the venue.</p>
+    </div>
+</div>
+
+<!-- SLIDE 7: THE NUMBERS -->
+<div class="section-dark">
+    <div class="section">
+        <p class="eyebrow">The Numbers</p>
+        <h2 style="color: #fff;">Average Sponsor ROI: <span style="color: #2bbcb3;">4x Return</span></h2>
+        <div class="roi-grid">
+            <div class="roi-card">
+                <div class="company">SphereRocket</div>
+                <div class="industry">VA Staffing</div>
+                <div class="invested">Invested: $77K</div>
+                <div class="returned">$420K</div>
+                <div class="multiplier">5.5x return</div>
+            </div>
+            <div class="roi-card">
+                <div class="company">Maropost</div>
+                <div class="industry">Email Platform</div>
+                <div class="invested">Invested: $77K</div>
+                <div class="returned">$1M+</div>
+                <div class="multiplier">13x return</div>
+            </div>
+            <div class="roi-card">
+                <div class="company">IPS</div>
+                <div class="industry">Payment Processing</div>
+                <div class="invested">&nbsp;</div>
+                <div class="returned">$10M/mo</div>
+                <div class="multiplier">Deal closed at event</div>
+            </div>
+            <div class="roi-card">
+                <div class="company">Average</div>
+                <div class="industry">All Sponsors</div>
+                <div class="invested">&nbsp;</div>
+                <div class="returned">4x ROI</div>
+                <div class="multiplier">Exposed return on investment</div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- SLIDE 8: RENEWAL -->
+<div>
+    <div class="section" style="text-align: center;">
+        <div class="big-number">92%</div>
+        <h2>Sponsor Renewal Rate Over 6 Years</h2>
+        <p style="font-size: 20px;">They come back because the money is real.</p>
+        <div class="cta-center"><a href="https://event.fourroomsmastermind.com/widget/bookings/four-rooms-intro-call" class="cta-btn">Schedule A Call With Brett</a></div>
+    </div>
+</div>
+
+<!-- SLIDE 9: VIK TESTIMONIAL -->
+<div class="section-light">
+    <div class="section">
+        <p class="eyebrow">Sponsor Testimonial</p>
+        <div class="testimonial">
+            <blockquote>"We invested $77K and made over a million dollars."</blockquote>
+            <div class="attribution">— Vik, Maropost (Email Service Provider)</div>
+            <div class="result">$77K invested. $1,000,000+ returned. 13x ROI.</div>
+        </div>
+        <p>Vik didn't get lucky. We matched him with the right people. The relationships did the rest.</p>
+    </div>
+</div>
+
+<!-- SLIDE 10: SPHEREROCKET TESTIMONIAL -->
+<div>
+    <div class="section">
+        <p class="eyebrow">Sponsor Testimonial</p>
+        <div class="testimonial">
+            <blockquote>"$77K in. $420K out."</blockquote>
+            <div class="attribution">— SphereRocket (VA Staffing)</div>
+            <div class="result">5.5x return on investment.</div>
+        </div>
+        <p>VA staffing for 7-9 figure founders. We filled their pipeline with qualified buyers before they unpacked their booth.</p>
+    </div>
+</div>
+
+<!-- SLIDE 11: OPTIONS -->
+<div class="section-dark">
+    <div class="section">
+        <p class="eyebrow">Sponsorship Options</p>
+        <h2 style="color: #fff;">It All Depends On The Access You Want.</h2>
+        <div class="step">
+            <div class="step-number">1</div>
+            <div class="step-content">
+                <h4 style="color: #fff;">Booth</h4>
+                <p>Your brand in front of every attendee.</p>
+            </div>
+        </div>
+        <div class="step">
+            <div class="step-number">2</div>
+            <div class="step-content">
+                <h4 style="color: #fff;">Expert Tables</h4>
+                <p>You host. We fill the seats with people who need you.</p>
+            </div>
+        </div>
+        <div class="step">
+            <div class="step-number">3</div>
+            <div class="step-content">
+                <h4 style="color: #fff;">Speaking</h4>
+                <p>Stage time. Authority positioning.</p>
+            </div>
+        </div>
+        <p style="margin-top: 24px; font-size: 20px; font-weight: 700; color: #2bbcb3;">Every option includes curated introductions. That's the baseline. Everything else is how deep you want to go.</p>
+    </div>
+</div>
+
+<!-- SLIDE 12: MATCHMAKING PROCESS -->
+<div>
+    <div class="section">
+        <p class="eyebrow">How It Works For Sponsors</p>
+        <h2>The Matchmaking Process</h2>
+        <div class="step">
+            <div class="step-number">1</div>
+            <div class="step-content">
+                <h4>We Learn Your Ideal Client</h4>
+                <p>Who they are, what problems you solve, what a great customer looks like for you.</p>
+            </div>
+        </div>
+        <div class="step">
+            <div class="step-number">2</div>
+            <div class="step-content">
+                <h4>We Match You</h4>
+                <p>Cross-referenced against every attendee's intake survey. We know what they need before they arrive.</p>
+            </div>
+        </div>
+        <div class="step">
+            <div class="step-number">3</div>
+            <div class="step-content">
+                <h4>Introductions Start Before The Event</h4>
+                <p>You're building relationships while other sponsors are still designing their booth graphics.</p>
+            </div>
+        </div>
+        <div class="step">
+            <div class="step-number">4</div>
+            <div class="step-content">
+                <h4>At The Event</h4>
+                <p>Curated dinners, expert tables, breakout rooms. All filled with your potential clients.</p>
+            </div>
+        </div>
+        <div class="step">
+            <div class="step-number">5</div>
+            <div class="step-content">
+                <h4>After The Event</h4>
+                <p>You stay in the community. Introductions keep coming.</p>
+            </div>
+        </div>
+        <div class="cta-center"><a href="https://event.fourroomsmastermind.com/widget/bookings/four-rooms-intro-call" class="cta-btn">Schedule A Call With Brett</a></div>
+    </div>
+</div>
+
+<!-- SLIDE 13: KAREN TESTIMONIAL -->
+<div class="section-light">
+    <div class="section">
+        <p class="eyebrow">Member Results</p>
+        <div class="testimonial">
+            <blockquote>"We closed a $50K deal through a strategy someone shared at the event. More than paid for my investment and we're just getting started."</blockquote>
+            <div class="attribution">— Karen Donaldson, Confidence & Peak Performance Coach</div>
+            <div class="result">One event. One connection. $50K.</div>
+        </div>
+        <p>Karen helps people get booked on stages. She came to one Four Rooms event and closed a $50K deal within a month.</p>
+    </div>
+</div>
+
+<!-- SLIDE 14: OBJECTIONS -->
+<div class="section-dark">
+    <div class="section">
+        <p class="eyebrow">Common Questions</p>
+        <h2 style="color: #fff;">Let's Address The Obvious.</h2>
+        <div class="objection">
+            <div class="q">"The event is months away."</div>
+            <div class="a">Good. More time for us to connect you. Our sponsors generate ROI before day one.</div>
+        </div>
+        <div class="objection">
+            <div class="q">"How do I know it works for my business?"</div>
+            <div class="a">VA staffing. Email platforms. Payment processing. Coaching. If you serve 7-9 figure founders, this room is full of your buyers.</div>
+        </div>
+        <div class="objection">
+            <div class="q">"I've sponsored events before. Didn't work."</div>
+            <div class="a">Because they gave you a booth and a prayer. We give you introductions. 92% renewal rate. That's proof.</div>
+        </div>
+    </div>
+</div>
+
+<!-- SLIDE 15: VIC TESTIMONIAL -->
+<div>
+    <div class="section">
+        <p class="eyebrow">Member Results</p>
+        <div class="testimonial">
+            <blockquote>"I've made $1.5 million from this community."</blockquote>
+            <div class="attribution">— Vic Joseph</div>
+            <div class="result">$1,500,000 in revenue from Four Rooms relationships.</div>
+        </div>
+        <p>Vic sat one-on-one with Mike Fata who exited a $400M business. Not after a keynote. One-on-one, going deep on his business, answering his specific questions.</p>
+        <p>He loved the rigorous interview process. Every other event felt like they were just taking his money. Not this one.</p>
+        <p>When he gave his testimonial, he paused. Because it hit him how real it was.</p>
+    </div>
+</div>
+
+<!-- SLIDE 16: WHAT YOU GET -->
+<div class="section-light">
+    <div class="section">
+        <p class="eyebrow">What You Get</p>
+        <h2>As A Four Rooms Sponsor</h2>
+        <ul class="checklist">
+            <li>Curated introductions before and during the event</li>
+            <li>Placement at dinners, expert tables, breakout rooms — all matched to your ideal client</li>
+            <li>Active involvement — you're in the room, not outside it</li>
+            <li>One at the booth, one being introduced. Always.</li>
+            <li>Option to speak or host expert sessions</li>
+            <li>200-250 verified 7-9 figure founders</li>
+            <li>Introductions that continue after the event</li>
+            <li>A team that learns your business and does the matching for you</li>
+        </ul>
+    </div>
+</div>
+
+<!-- SLIDE 17: CODY TESTIMONIAL -->
+<div>
+    <div class="section">
+        <p class="eyebrow">Member Results</p>
+        <div class="testimonial">
+            <blockquote>"I've 20x'd my investment since being in this community."</blockquote>
+            <div class="attribution">— Cody Jefferson</div>
+            <div class="result">20x return on investment.</div>
+        </div>
+        <p>Cody runs multiple businesses. Keynotes worldwide. Has a massive following.</p>
+        <p>He doesn't need another event. But he keeps showing up. Because we put him in front of the right people at every stage of his business.</p>
+        <p>He told Kimi he'll never leave.</p>
+    </div>
+</div>
+
+<!-- SLIDE 18: CTA -->
+<div class="section-dark">
+    <div class="section" style="text-align: center; padding: 80px 24px;">
+        <p class="eyebrow">San Diego, California</p>
+        <h1 style="color: #fff;">November 12-15, 2026</h1>
+        <p style="font-size: 20px; color: #ccc;">Sponsor spots are limited. We cap it to protect the experience.</p>
+        <p style="font-size: 22px; font-weight: 700; color: #fff; margin-top: 24px;">Let's figure out which option makes sense for your business.</p>
+        <div class="cta-center"><a href="https://event.fourroomsmastermind.com/widget/bookings/four-rooms-intro-call" class="cta-btn" style="font-size: 18px; padding: 20px 56px;">Schedule A Call With Brett</a></div>
+    </div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+    <p>Copyright &copy; 2026 Four Rooms Mastermind. All Rights Reserved.</p>
+    <p style="margin-top: 8px;"><a href="https://fourroomsmastermind.com">fourroomsmastermind.com</a></p>
+</footer>
+
+</body>
+</html>
