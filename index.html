@@ -8,161 +8,114 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { font-family: 'Inter', sans-serif; background: #0d1b2a; color: #fff; min-height: 100vh; }
+        body { font-family: 'Inter', sans-serif; background: #fff; color: #1a1a1a; }
 
-        /* PAGE LAYOUT */
-        .page { max-width: 960px; margin: 0 auto; padding: 40px 24px 60px; text-align: center; }
+        .page { max-width: 900px; margin: 0 auto; padding: 40px 20px 60px; text-align: center; }
 
         /* LOGO */
-        .page-logo { margin-bottom: 32px; }
-        .page-logo img { height: 48px; filter: brightness(0) invert(1); }
+        .logo { margin-bottom: 28px; }
+        .logo img { height: 44px; }
 
-        /* STEP LABELS */
-        .step-label {
-            font-size: 22px; font-weight: 800; color: #fff; margin-bottom: 8px;
-            text-transform: uppercase; letter-spacing: 1px;
-        }
-        .step-sublabel {
-            font-size: 16px; color: #aaa; margin-bottom: 24px; font-weight: 500;
-        }
-        .underline-accent {
-            width: 80px; height: 4px; background: #2bbcb3; margin: 0 auto 28px; border-radius: 2px;
+        /* HEADLINE */
+        .headline {
+            font-size: 32px; font-weight: 900; line-height: 1.25;
+            margin-bottom: 32px; max-width: 750px; margin-left: auto; margin-right: auto;
         }
 
-        /* SLIDE VIEWER */
-        .viewer-wrap {
-            position: relative;
-            width: 100%;
-            padding-top: 62.5%; /* 16:10 aspect ratio */
-            background: #fff;
-            border-radius: 10px;
-            overflow: hidden;
-            box-shadow: 0 8px 40px rgba(0,0,0,0.4);
-            margin-bottom: 48px;
+        /* DECK VIEWER */
+        .deck-wrap {
+            position: relative; width: 100%; padding-top: 56.25%;
+            background: #000; border-radius: 4px; overflow: hidden;
+            margin-bottom: 36px;
         }
-        .viewer {
-            position: absolute; top: 0; left: 0; width: 100%; height: 100%;
-        }
-
-        /* SLIDES */
+        .deck { position: absolute; top: 0; left: 0; width: 100%; height: 100%; }
         .slide {
             position: absolute; top: 0; left: 0; width: 100%; height: 100%;
             display: flex; flex-direction: column; justify-content: center; align-items: center;
-            padding: 40px 48px;
-            opacity: 0; pointer-events: none;
-            transition: opacity 0.3s ease;
-            text-align: center;
-            overflow-y: auto;
+            padding: 36px 44px; opacity: 0; pointer-events: none;
+            transition: opacity 0.3s ease; text-align: center; overflow-y: auto;
         }
         .slide.active { opacity: 1; pointer-events: auto; }
-        .s-white { background: #fff; color: #1a1a1a; }
-        .s-dark { background: #0d1b2a; color: #fff; }
-        .s-teal { background: #2bbcb3; color: #fff; }
+        .sw { background: #fff; color: #1a1a1a; }
+        .sd { background: #0d1b2a; color: #fff; }
 
-        /* SLIDE TYPOGRAPHY */
-        .slide h1 { font-size: 36px; font-weight: 900; line-height: 1.2; margin-bottom: 18px; max-width: 700px; }
-        .slide h2 { font-size: 28px; font-weight: 800; line-height: 1.25; margin-bottom: 16px; max-width: 700px; }
-        .slide p { font-size: 17px; line-height: 1.6; margin-bottom: 12px; max-width: 650px; }
-        .big-num { font-size: 72px; font-weight: 900; color: #2bbcb3; line-height: 1; margin-bottom: 8px; }
-        .s-dark .big-num { color: #2bbcb3; }
-        .teal { color: #2bbcb3; }
-        .quote { font-size: 26px; font-weight: 700; font-style: italic; max-width: 650px; margin-bottom: 14px; line-height: 1.35; }
-        .attr { font-size: 16px; font-weight: 600; color: #888; margin-bottom: 10px; }
-        .s-dark .attr { color: #aaa; }
-        .result { font-size: 20px; font-weight: 700; color: #2bbcb3; margin-bottom: 14px; }
-        .nav-hint-slide { font-size: 13px; color: #aaa; position: absolute; bottom: 14px; left: 20px; }
-        .s-dark .nav-hint-slide { color: #555; }
+        .slide h1 { font-size: 34px; font-weight: 900; line-height: 1.2; margin-bottom: 16px; max-width: 680px; }
+        .slide h2 { font-size: 26px; font-weight: 800; line-height: 1.25; margin-bottom: 14px; max-width: 680px; }
+        .slide p { font-size: 17px; line-height: 1.55; margin-bottom: 10px; max-width: 620px; }
+        .bn { font-size: 68px; font-weight: 900; color: #2bbcb3; line-height: 1; margin-bottom: 8px; }
+        .tl { color: #2bbcb3; }
+        .qt { font-size: 24px; font-weight: 700; font-style: italic; max-width: 620px; margin-bottom: 12px; line-height: 1.35; }
+        .at { font-size: 15px; font-weight: 600; color: #888; margin-bottom: 8px; }
+        .sd .at { color: #aaa; }
+        .rs { font-size: 19px; font-weight: 700; color: #2bbcb3; margin-bottom: 12px; }
+        .nh { font-size: 12px; color: #aaa; position: absolute; bottom: 12px; left: 18px; }
 
-        /* LISTS */
-        .xl, .cl { list-style: none; text-align: left; max-width: 550px; margin: 16px auto; padding: 0; }
-        .xl li, .cl li { font-size: 19px; padding: 8px 0; }
+        .xl, .cl { list-style: none; text-align: left; max-width: 520px; margin: 14px auto; padding: 0; }
+        .xl li, .cl li { font-size: 18px; padding: 7px 0; }
         .xl li::before { content: "✗  "; color: #cc0000; font-weight: 700; }
         .cl li::before { content: "✓  "; color: #2bbcb3; font-weight: 700; }
 
-        /* ROI GRID */
-        .roi-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin: 20px auto; max-width: 600px; }
-        .roi-card { background: #f7f8fa; border: 2px solid #e8e8e8; border-radius: 8px; padding: 18px; text-align: center; }
-        .s-dark .roi-card { background: #162d44; border-color: #2bbcb3; }
-        .roi-card .co { font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 2px; color: #2bbcb3; }
-        .roi-card .ind { font-size: 12px; color: #999; margin-bottom: 6px; }
-        .roi-card .ret { font-size: 28px; font-weight: 900; color: #2bbcb3; }
-        .roi-card .mult { font-size: 13px; font-weight: 700; }
-        .s-dark .roi-card .mult { color: #fff; }
+        .rg { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin: 16px auto; max-width: 560px; }
+        .rc { background: #162d44; border: 1px solid #2bbcb3; border-radius: 8px; padding: 16px; text-align: center; }
+        .rc .co { font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 2px; color: #2bbcb3; }
+        .rc .ind { font-size: 11px; color: #888; margin-bottom: 4px; }
+        .rc .ret { font-size: 26px; font-weight: 900; color: #2bbcb3; }
+        .rc .mu { font-size: 12px; font-weight: 700; color: #fff; }
 
-        /* STEPS */
-        .steps { text-align: left; max-width: 550px; margin: 16px auto; }
-        .stp { display: flex; gap: 12px; margin-bottom: 14px; align-items: flex-start; }
-        .stp-n { background: #2bbcb3; color: #fff; width: 30px; height: 30px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 800; font-size: 14px; flex-shrink: 0; }
-        .stp-t { flex: 1; }
-        .stp-t strong { font-size: 16px; display: block; }
-        .stp-t span { font-size: 14px; color: #888; }
-        .s-dark .stp-t span { color: #bbb; }
+        .sps { text-align: left; max-width: 520px; margin: 14px auto; }
+        .sp { display: flex; gap: 10px; margin-bottom: 12px; align-items: flex-start; }
+        .sp-n { background: #2bbcb3; color: #fff; width: 28px; height: 28px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 800; font-size: 13px; flex-shrink: 0; }
+        .sp-t strong { font-size: 15px; display: block; }
+        .sp-t span { font-size: 13px; color: #888; }
+        .sd .sp-t span { color: #bbb; }
 
-        /* OPTIONS */
-        .opts { text-align: left; max-width: 550px; margin: 16px auto; }
-        .opt { margin-bottom: 16px; }
-        .opt strong { font-size: 19px; }
-        .opt p { font-size: 16px; color: #888; margin-top: 2px; max-width: none; }
-        .s-dark .opt strong { color: #fff; }
-        .s-dark .opt p { color: #bbb; }
+        .ops { text-align: left; max-width: 520px; margin: 14px auto; }
+        .op { margin-bottom: 14px; }
+        .op strong { font-size: 18px; color: #fff; }
+        .op p { font-size: 15px; color: #bbb; margin-top: 2px; max-width: none; }
 
-        /* OBJECTIONS */
-        .obj { text-align: left; max-width: 550px; margin: 0 auto 18px; }
-        .obj .q { font-size: 17px; font-weight: 700; color: #ff6b6b; margin-bottom: 4px; }
-        .obj .a { font-size: 16px; color: #ccc; }
+        .ob { text-align: left; max-width: 520px; margin: 0 auto 16px; }
+        .ob .q { font-size: 16px; font-weight: 700; color: #ff6b6b; margin-bottom: 3px; }
+        .ob .a { font-size: 15px; color: #ccc; }
 
-        /* VIEWER NAV */
-        .viewer-nav {
+        /* NAV ARROWS */
+        .arr {
             position: absolute; top: 50%; transform: translateY(-50%);
-            width: 40px; height: 40px; background: rgba(0,0,0,0.1);
+            width: 36px; height: 36px; background: rgba(0,0,0,0.1);
             border: none; border-radius: 50%; cursor: pointer;
-            font-size: 18px; color: #333; z-index: 10;
+            font-size: 16px; color: #333; z-index: 10;
             display: flex; align-items: center; justify-content: center;
-            transition: background 0.2s;
         }
-        .viewer-nav:hover { background: rgba(0,0,0,0.2); }
-        .viewer-nav.left { left: 10px; }
-        .viewer-nav.right { right: 10px; }
+        .arr:hover { background: rgba(0,0,0,0.18); }
+        .arr.l { left: 8px; }
+        .arr.r { right: 8px; }
+        .cnt { position: absolute; bottom: 12px; right: 18px; font-size: 12px; font-weight: 600; color: #999; z-index: 10; }
 
-        /* SLIDE COUNTER */
-        .slide-count {
-            position: absolute; bottom: 14px; right: 20px;
-            font-size: 13px; font-weight: 600; color: #999; z-index: 10;
-        }
-
-        /* CTA SECTION */
-        .cta-section { margin-top: 8px; }
+        /* CTA */
         .cta-btn {
             display: inline-block; background: #2bbcb3; color: #fff;
-            padding: 20px 56px; border-radius: 8px; text-decoration: none;
-            font-weight: 800; font-size: 20px; text-transform: uppercase;
+            padding: 18px 52px; border-radius: 6px; text-decoration: none;
+            font-weight: 800; font-size: 18px; text-transform: uppercase;
             letter-spacing: 1px; transition: background 0.3s, transform 0.2s;
         }
         .cta-btn:hover { background: #239e96; transform: translateY(-2px); }
-        .cta-sub { font-size: 13px; color: #666; margin-top: 10px; font-style: italic; }
+        .cta-sub { font-size: 12px; color: #999; margin-top: 10px; font-style: italic; }
 
         /* FOOTER */
-        footer { border-top: 1px solid #1e3450; padding: 28px 24px; text-align: center; margin-top: 48px; }
-        footer .f-logo img { height: 28px; filter: brightness(0) invert(1); opacity: 0.5; margin-bottom: 12px; }
-        footer .social a { color: #2bbcb3; text-decoration: none; font-size: 14px; font-weight: 600; margin: 0 12px; }
-        footer .social a:hover { text-decoration: underline; }
-        footer .copy { font-size: 13px; color: #555; margin-top: 12px; }
-        footer .copy a { color: #2bbcb3; text-decoration: none; }
+        footer { text-align: center; padding: 32px 20px; border-top: 1px solid #eee; margin-top: 40px; }
+        footer p { font-size: 12px; color: #999; }
+        footer a { color: #2bbcb3; text-decoration: none; }
 
-        /* MOBILE */
         @media (max-width: 768px) {
-            .page { padding: 24px 16px 40px; }
-            .page-logo img { height: 36px; }
-            .step-label { font-size: 18px; }
-            .slide { padding: 28px 24px; }
-            .slide h1 { font-size: 24px; }
-            .slide h2 { font-size: 20px; }
-            .slide p { font-size: 15px; }
-            .big-num { font-size: 48px; }
-            .quote { font-size: 20px; }
-            .roi-grid { grid-template-columns: 1fr; }
+            .headline { font-size: 22px; }
+            .slide { padding: 24px 20px; }
+            .slide h1 { font-size: 22px; }
+            .slide h2 { font-size: 18px; }
+            .slide p { font-size: 14px; }
+            .bn { font-size: 44px; }
+            .qt { font-size: 18px; }
+            .rg { grid-template-columns: 1fr; }
             .cta-btn { padding: 16px 36px; font-size: 16px; }
-            .xl li, .cl li { font-size: 16px; }
         }
     </style>
 </head>
@@ -170,56 +123,42 @@
 
 <div class="page">
 
-    <!-- LOGO -->
-    <div class="page-logo">
+    <div class="logo">
         <img src="https://assets.cdn.filesafe.space/fdAqsag8cBj7Lvv6NUlk/media/69fb1b380394c9850351a1a4.svg" alt="Four Rooms Mastermind">
     </div>
 
-    <!-- STEP 1 -->
-    <div class="step-label">Step One: Go Through This Deck Right Now</div>
-    <div class="underline-accent"></div>
+    <h1 class="headline">Discover How Four Rooms Sponsors Are Generating 4x-13x ROI From A Single Event</h1>
 
-    <!-- SLIDE VIEWER -->
-    <div class="viewer-wrap">
-        <div class="viewer">
-
-            <!-- SLIDE 1 -->
-            <div class="slide s-white active" data-i="0">
+    <div class="deck-wrap">
+        <div class="deck">
+            <div class="slide sw active" data-i="0">
                 <h1>You're About To See Something No Other Event Offers.</h1>
                 <p>We don't give you a booth and wish you luck. We interview every attendee. We learn what they need. Then we introduce them to you.</p>
-                <p style="font-weight:700; font-size:20px;">Strategically. Intentionally. Before the event even starts.</p>
-                <div class="nav-hint-slide">Press the right arrow to continue →</div>
+                <p style="font-weight:700; font-size:19px;">Strategically. Intentionally. Before the event even starts.</p>
+                <div class="nh">Press the right arrow to continue →</div>
             </div>
-
-            <!-- SLIDE 2 -->
-            <div class="slide s-dark" data-i="1">
-                <div class="big-num">200-250</div>
+            <div class="slide sd" data-i="1">
+                <div class="bn">200-250</div>
                 <h2 style="color:#fff;">Verified Founders Per Event</h2>
                 <p>Average business: <strong>8 figures</strong>. Every person verified their revenue before buying a ticket.</p>
                 <p><strong>Every single one is a founder or C-suite. Zero salespeople.</strong></p>
                 <p>44% female. 56% male. One of the highest female attendee ratios in the industry.</p>
-                <p class="teal" style="font-weight:700; font-size:19px;">1,700+ companies have walked away with partnerships, clients, and ROI.</p>
+                <p class="tl" style="font-weight:700;">1,700+ companies have walked away with partnerships, clients, and ROI.</p>
             </div>
-
-            <!-- SLIDE 3 -->
-            <div class="slide s-white" data-i="2">
+            <div class="slide sw" data-i="2">
                 <h2>The Caliber Of People In This Room</h2>
                 <p>These aren't just founders. These are the people behind brands you already know.</p>
                 <p style="font-weight:700;">ClickFunnels. Digistore. Tushy. Midday Squares. Equinox. Snapchat.</p>
                 <p>Members like Miki Agrawal, Eddie Maalouf, Molly Pittman, David Bayer, JJ Virgin.</p>
                 <p>When you sponsor this event, you're in the room with the people who built these companies.</p>
             </div>
-
-            <!-- SLIDE 4 -->
-            <div class="slide s-white" data-i="3">
+            <div class="slide sw" data-i="3">
                 <h1>This isn't a marketing expense.</h1>
-                <p style="font-size:24px; font-weight:700; color:#2bbcb3;">It's a client acquisition machine.</p>
+                <p style="font-size:22px; font-weight:700; color:#2bbcb3;">It's a client acquisition machine.</p>
                 <p>One curated introduction can be worth more than your entire ad budget this year.</p>
                 <p style="font-weight:700;">And we don't leave it to chance.</p>
             </div>
-
-            <!-- SLIDE 5 -->
-            <div class="slide s-white" data-i="4">
+            <div class="slide sw" data-i="4">
                 <h2>How Other Events Work</h2>
                 <ul class="xl">
                     <li>Booth in a hallway</li>
@@ -228,9 +167,7 @@
                     <li>Hope and pray</li>
                 </ul>
             </div>
-
-            <!-- SLIDE 6 -->
-            <div class="slide s-white" data-i="5">
+            <div class="slide sw" data-i="5">
                 <h2>How Four Rooms Works</h2>
                 <ul class="cl">
                     <li>We identify your ideal clients</li>
@@ -238,218 +175,110 @@
                     <li>Curated dinners, expert tables, breakout rooms</li>
                     <li>One at booth, one being introduced. Always.</li>
                 </ul>
-                <p style="font-weight:700; font-size:19px; margin-top:12px;">You're not outside hoping. You're inside connecting.</p>
+                <p style="font-weight:700; font-size:18px; margin-top:10px;">You're not outside hoping. You're inside connecting.</p>
             </div>
-
-            <!-- SLIDE 7 -->
-            <div class="slide s-white" data-i="6">
+            <div class="slide sw" data-i="6">
                 <h2>Sponsors Start Making Money<br>Before The Event.</h2>
                 <p>The earlier you sponsor, the earlier we connect you.</p>
                 <p>Someone says "I need a payment processor" — if you're our payment sponsor, we connect them to you. <strong>That day.</strong></p>
                 <p style="font-weight:700;">Our sponsors make money before anyone sets foot in the venue.</p>
             </div>
-
-            <!-- SLIDE 8 -->
-            <div class="slide s-dark" data-i="7">
-                <h2 style="color:#fff;">Average Sponsor ROI: <span class="teal">4x Return</span></h2>
-                <div class="roi-grid">
-                    <div class="roi-card">
-                        <div class="co">SphereRocket</div>
-                        <div class="ind">VA Staffing</div>
-                        <div class="ret">$420K</div>
-                        <div class="mult">$77K in → 5.5x return</div>
-                    </div>
-                    <div class="roi-card">
-                        <div class="co">Maropost</div>
-                        <div class="ind">Email Platform</div>
-                        <div class="ret">$1M+</div>
-                        <div class="mult">$77K in → 13x return</div>
-                    </div>
-                    <div class="roi-card">
-                        <div class="co">IPS</div>
-                        <div class="ind">Payment Processing</div>
-                        <div class="ret">$10M/mo</div>
-                        <div class="mult">Deal closed at event</div>
-                    </div>
-                    <div class="roi-card">
-                        <div class="co">Average</div>
-                        <div class="ind">All Sponsors</div>
-                        <div class="ret">4x ROI</div>
-                        <div class="mult">&nbsp;</div>
-                    </div>
+            <div class="slide sd" data-i="7">
+                <h2 style="color:#fff;">Average Sponsor ROI: <span class="tl">4x Return</span></h2>
+                <div class="rg">
+                    <div class="rc"><div class="co">SphereRocket</div><div class="ind">VA Staffing</div><div class="ret">$420K</div><div class="mu">$77K in · 5.5x</div></div>
+                    <div class="rc"><div class="co">Maropost</div><div class="ind">Email Platform</div><div class="ret">$1M+</div><div class="mu">$77K in · 13x</div></div>
+                    <div class="rc"><div class="co">IPS</div><div class="ind">Payment Processing</div><div class="ret">$10M/mo</div><div class="mu">Closed at event</div></div>
+                    <div class="rc"><div class="co">Average</div><div class="ind">All Sponsors</div><div class="ret">4x ROI</div><div class="mu">&nbsp;</div></div>
                 </div>
             </div>
-
-            <!-- SLIDE 9 -->
-            <div class="slide s-white" data-i="8">
-                <div class="big-num">92%</div>
+            <div class="slide sw" data-i="8">
+                <div class="bn">92%</div>
                 <h2>Sponsor Renewal Rate Over 6 Years</h2>
-                <p style="font-size:20px;">They come back because the money is real.</p>
+                <p style="font-size:19px;">They come back because the money is real.</p>
             </div>
-
-            <!-- SLIDE 10 -->
-            <div class="slide s-white" data-i="9">
-                <div class="quote">"We invested $77K and made over a million dollars."</div>
-                <div class="attr">— Vik, Maropost (Email Service Provider)</div>
-                <div class="result">$77K invested. $1,000,000+ returned. 13x ROI.</div>
+            <div class="slide sw" data-i="9">
+                <div class="qt">"We invested $77K and made over a million dollars."</div>
+                <div class="at">— Vik, Maropost (Email Service Provider)</div>
+                <div class="rs">$77K invested. $1,000,000+ returned. 13x ROI.</div>
                 <p>Vik didn't get lucky. We matched him with the right people.</p>
             </div>
-
-            <!-- SLIDE 11 -->
-            <div class="slide s-white" data-i="10">
-                <div class="quote">"$77K in. $420K out."</div>
-                <div class="attr">— SphereRocket (VA Staffing)</div>
-                <div class="result">5.5x return on investment.</div>
+            <div class="slide sw" data-i="10">
+                <div class="qt">"$77K in. $420K out."</div>
+                <div class="at">— SphereRocket (VA Staffing)</div>
+                <div class="rs">5.5x return on investment.</div>
                 <p>We filled their pipeline with qualified buyers before they unpacked their booth.</p>
             </div>
-
-            <!-- SLIDE 12 -->
-            <div class="slide s-dark" data-i="11">
+            <div class="slide sd" data-i="11">
                 <h2 style="color:#fff;">It All Depends On The Access You Want.</h2>
-                <div class="opts">
-                    <div class="opt">
-                        <strong>1. Booth</strong>
-                        <p>Your brand in front of every attendee.</p>
-                    </div>
-                    <div class="opt">
-                        <strong>2. Expert Tables</strong>
-                        <p>You host. We fill the seats with people who need you.</p>
-                    </div>
-                    <div class="opt">
-                        <strong>3. Speaking</strong>
-                        <p>Stage time. Authority positioning.</p>
-                    </div>
+                <div class="ops">
+                    <div class="op"><strong>1. Booth</strong><p>Your brand in front of every attendee.</p></div>
+                    <div class="op"><strong>2. Expert Tables</strong><p>You host. We fill the seats with people who need you.</p></div>
+                    <div class="op"><strong>3. Speaking</strong><p>Stage time. Authority positioning.</p></div>
                 </div>
                 <p style="color:#2bbcb3; font-weight:700;">Every option includes curated introductions. That's the baseline.</p>
             </div>
-
-            <!-- SLIDE 13 -->
-            <div class="slide s-white" data-i="12">
+            <div class="slide sw" data-i="12">
                 <h2>The Matchmaking Process</h2>
-                <div class="steps">
-                    <div class="stp"><div class="stp-n">1</div><div class="stp-t"><strong>We Learn Your Ideal Client</strong></div></div>
-                    <div class="stp"><div class="stp-n">2</div><div class="stp-t"><strong>We Match You</strong><span>Cross-referenced against every attendee's intake survey.</span></div></div>
-                    <div class="stp"><div class="stp-n">3</div><div class="stp-t"><strong>Introductions Start Before The Event</strong></div></div>
-                    <div class="stp"><div class="stp-n">4</div><div class="stp-t"><strong>At The Event</strong><span>Curated dinners, expert tables, breakout rooms.</span></div></div>
-                    <div class="stp"><div class="stp-n">5</div><div class="stp-t"><strong>After The Event</strong><span>Introductions keep coming.</span></div></div>
+                <div class="sps">
+                    <div class="sp"><div class="sp-n">1</div><div class="sp-t"><strong>We Learn Your Ideal Client</strong></div></div>
+                    <div class="sp"><div class="sp-n">2</div><div class="sp-t"><strong>We Match You</strong><span>Cross-referenced against every attendee's intake survey.</span></div></div>
+                    <div class="sp"><div class="sp-n">3</div><div class="sp-t"><strong>Introductions Start Before The Event</strong></div></div>
+                    <div class="sp"><div class="sp-n">4</div><div class="sp-t"><strong>At The Event</strong><span>Curated dinners, expert tables, breakout rooms.</span></div></div>
+                    <div class="sp"><div class="sp-n">5</div><div class="sp-t"><strong>After The Event</strong><span>Introductions keep coming.</span></div></div>
                 </div>
             </div>
-
-            <!-- SLIDE 14 -->
-            <div class="slide s-white" data-i="13">
-                <div class="quote">"We closed a $50K deal through a strategy someone shared at the event."</div>
-                <div class="attr">— Karen Donaldson, Confidence &amp; Peak Performance Coach</div>
-                <div class="result">One event. One connection. $50K.</div>
+            <div class="slide sw" data-i="13">
+                <div class="qt">"We closed a $50K deal through a strategy someone shared at the event."</div>
+                <div class="at">— Karen Donaldson, Confidence &amp; Peak Performance Coach</div>
+                <div class="rs">One event. One connection. $50K.</div>
             </div>
-
-            <!-- SLIDE 15 -->
-            <div class="slide s-dark" data-i="14">
+            <div class="slide sd" data-i="14">
                 <h2 style="color:#fff;">Let's Address The Obvious.</h2>
-                <div class="obj">
-                    <div class="q">"The event is months away."</div>
-                    <div class="a">Good. More time for us to connect you. Our sponsors generate ROI before day one.</div>
-                </div>
-                <div class="obj">
-                    <div class="q">"How do I know it works for my business?"</div>
-                    <div class="a">VA staffing. Email platforms. Payment processing. Coaching. If you serve 7-9 figure founders, this room is full of your buyers.</div>
-                </div>
-                <div class="obj">
-                    <div class="q">"I've sponsored events before. Didn't work."</div>
-                    <div class="a">Because they gave you a booth and a prayer. We give you introductions. 92% renewal rate.</div>
-                </div>
+                <div class="ob"><div class="q">"The event is months away."</div><div class="a">Good. More time for us to connect you. Our sponsors generate ROI before day one.</div></div>
+                <div class="ob"><div class="q">"How do I know it works for my business?"</div><div class="a">VA staffing. Email platforms. Payment processing. Coaching. If you serve 7-9 figure founders, this room is full of your buyers.</div></div>
+                <div class="ob"><div class="q">"I've sponsored events before. Didn't work."</div><div class="a">Because they gave you a booth and a prayer. We give you introductions. 92% renewal rate.</div></div>
             </div>
-
-            <!-- SLIDE 16 -->
-            <div class="slide s-white" data-i="15">
-                <div class="quote">"I've made $1.5 million from this community."</div>
-                <div class="attr">— Vic Joseph</div>
+            <div class="slide sw" data-i="15">
+                <div class="qt">"I've made $1.5 million from this community."</div>
+                <div class="at">— Vic Joseph</div>
                 <p>Vic sat one-on-one with Mike Fata who exited a $400M business. Not after a keynote. <strong>One-on-one.</strong></p>
             </div>
-
-            <!-- SLIDE 17 -->
-            <div class="slide s-white" data-i="16">
-                <div class="quote">"I've 20x'd my investment since being in this community."</div>
-                <div class="attr">— Cody Jefferson</div>
-                <div class="result">20x return on investment.</div>
+            <div class="slide sw" data-i="16">
+                <div class="qt">"I've 20x'd my investment since being in this community."</div>
+                <div class="at">— Cody Jefferson</div>
+                <div class="rs">20x return on investment.</div>
                 <p>He doesn't need another event. But he keeps showing up. He told Kimi he'll never leave.</p>
             </div>
-
-            <!-- SLIDE 18 -->
-            <div class="slide s-dark" data-i="17">
+            <div class="slide sd" data-i="17">
                 <h1 style="color:#fff;">November 12-15, 2026</h1>
-                <p style="color:#2bbcb3; font-size:22px; font-weight:700;">San Diego, California</p>
+                <p style="color:#2bbcb3; font-size:20px; font-weight:700;">San Diego, California</p>
                 <p style="color:#ccc;">Sponsor spots are limited. We cap it to protect the experience.</p>
                 <p style="font-weight:700; color:#fff;">Let's figure out which option makes sense for your business.</p>
             </div>
 
-            <!-- NAV ARROWS (inside viewer) -->
-            <button class="viewer-nav left" id="prevBtn" onclick="prev()" aria-label="Previous">&#8592;</button>
-            <button class="viewer-nav right" id="nextBtn" onclick="next()" aria-label="Next">&#8594;</button>
-
-            <!-- COUNTER -->
-            <div class="slide-count" id="cnt">1 / 18</div>
-
+            <button class="arr l" id="pb" onclick="prev()">&#8592;</button>
+            <button class="arr r" id="nb" onclick="next()">&#8594;</button>
+            <div class="cnt" id="ct">1 / 18</div>
         </div>
     </div>
 
-    <!-- STEP 2 -->
-    <div class="cta-section">
-        <div class="step-label">Step Two: Schedule A Call To See If You Qualify</div>
-        <div class="underline-accent"></div>
-        <a href="https://event.fourroomsmastermind.com/widget/bookings/four-rooms-intro-call" class="cta-btn">Yes! I Want To Schedule A Call</a>
-        <div class="cta-sub">All information is confidential and will not be shared.</div>
-    </div>
+    <a href="https://event.fourroomsmastermind.com/widget/bookings/four-rooms-intro-call" class="cta-btn">Book Your Call</a>
+    <div class="cta-sub">All information is confidential and will not be shared.</div>
 
 </div>
 
-<!-- FOOTER -->
 <footer>
-    <div class="f-logo"><img src="https://assets.cdn.filesafe.space/fdAqsag8cBj7Lvv6NUlk/media/69fb1b380394c9850351a1a4.svg" alt="Four Rooms Mastermind"></div>
-    <div class="social">
-        <a href="https://facebook.com/fourroomsmastermind" target="_blank">Facebook</a>
-        <a href="https://instagram.com/fourroomsmastermind/" target="_blank">Instagram</a>
-        <a href="https://linkedin.com/company/four-rooms-mastermind" target="_blank">LinkedIn</a>
-    </div>
-    <div class="copy">&copy; 2026 Four Rooms Mastermind. All Rights Reserved. &nbsp;|&nbsp; <a href="https://fourroomsmastermind.com">fourroomsmastermind.com</a></div>
+    <p>&copy; 2026 Four Rooms Mastermind. All Rights Reserved. &nbsp;|&nbsp; <a href="https://fourroomsmastermind.com">fourroomsmastermind.com</a></p>
 </footer>
 
 <script>
-    const slides = document.querySelectorAll('.slide');
-    const total = slides.length;
-    let cur = 0;
-
-    function go(n) {
-        slides[cur].classList.remove('active');
-        cur = Math.max(0, Math.min(n, total - 1));
-        slides[cur].classList.add('active');
-        document.getElementById('cnt').textContent = (cur + 1) + ' / ' + total;
-
-        const dk = slides[cur].classList.contains('s-dark');
-        document.querySelectorAll('.viewer-nav').forEach(b => {
-            b.style.color = dk ? '#fff' : '#333';
-            b.style.background = dk ? 'rgba(255,255,255,0.15)' : 'rgba(0,0,0,0.1)';
-        });
-        document.getElementById('cnt').style.color = dk ? '#666' : '#999';
-        document.getElementById('prevBtn').style.display = cur === 0 ? 'none' : 'flex';
-        document.getElementById('nextBtn').style.display = cur === total - 1 ? 'none' : 'flex';
-    }
-
-    function next() { go(cur + 1); }
-    function prev() { go(cur - 1); }
-
-    document.addEventListener('keydown', function(e) {
-        if (e.key === 'ArrowRight') { e.preventDefault(); next(); }
-        if (e.key === 'ArrowLeft') { e.preventDefault(); prev(); }
-    });
-
-    let tx = 0;
-    document.querySelector('.viewer-wrap').addEventListener('touchstart', function(e) { tx = e.changedTouches[0].screenX; }, false);
-    document.querySelector('.viewer-wrap').addEventListener('touchend', function(e) {
-        const d = tx - e.changedTouches[0].screenX;
-        if (Math.abs(d) > 50) { d > 0 ? next() : prev(); }
-    }, false);
-
-    go(0);
+const sl=document.querySelectorAll('.slide'),tot=sl.length;let c=0;
+function go(n){sl[c].classList.remove('active');c=Math.max(0,Math.min(n,tot-1));sl[c].classList.add('active');document.getElementById('ct').textContent=(c+1)+' / '+tot;const dk=sl[c].classList.contains('sd');document.querySelectorAll('.arr').forEach(b=>{b.style.color=dk?'#fff':'#333';b.style.background=dk?'rgba(255,255,255,0.15)':'rgba(0,0,0,0.1)';});document.getElementById('ct').style.color=dk?'#666':'#999';document.getElementById('pb').style.display=c===0?'none':'flex';document.getElementById('nb').style.display=c===tot-1?'none':'flex';}
+function next(){go(c+1);}function prev(){go(c-1);}
+document.addEventListener('keydown',e=>{if(e.key==='ArrowRight'){e.preventDefault();next();}if(e.key==='ArrowLeft'){e.preventDefault();prev();}});
+let tx=0;const dw=document.querySelector('.deck-wrap');dw.addEventListener('touchstart',e=>{tx=e.changedTouches[0].screenX;});dw.addEventListener('touchend',e=>{const d=tx-e.changedTouches[0].screenX;if(Math.abs(d)>50){d>0?next():prev();}});
+go(0);
 </script>
 
 </body>
