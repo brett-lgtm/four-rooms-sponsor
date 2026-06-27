@@ -10,48 +10,57 @@
         * { margin: 0; padding: 0; box-sizing: border-box; }
         body {
             font-family: 'Inter', sans-serif;
-            background: #ffffff;
-            color: #1a1a1a;
+            background: #0a0f1a;
+            color: #fff;
+            min-height: 100vh;
         }
 
         .page {
-            max-width: 820px;
+            max-width: 860px;
             margin: 0 auto;
-            padding: 40px 20px 60px;
+            padding: 48px 20px 60px;
             text-align: center;
         }
 
         /* LOGO */
-        .logo { margin-bottom: 24px; }
+        .logo { margin-bottom: 32px; }
         .logo img {
-            height: 50px;
+            height: 70px;
             display: inline-block;
         }
 
         /* HEADLINE */
         .headline {
-            font-size: 28px;
+            font-size: 30px;
             font-weight: 800;
             line-height: 1.3;
-            margin-bottom: 28px;
-            color: #0d1b2a;
+            margin-bottom: 32px;
+            color: #fff;
+        }
+        .headline span { color: #c9a84c; }
+
+        /* SUBHEAD */
+        .subhead {
+            font-size: 15px;
+            color: #aab;
+            margin-bottom: 12px;
+            font-style: italic;
         }
 
-        /* SLIDE VIEWER — looks like embedded Google Slides */
+        /* SLIDE VIEWER — embedded presentation look */
         .viewer {
             position: relative;
             width: 100%;
-            max-width: 780px;
-            margin: 0 auto 32px;
-            border: 1px solid #ddd;
-            border-radius: 2px;
-            box-shadow: 0 1px 4px rgba(0,0,0,0.1);
-            background: #fff;
+            max-width: 800px;
+            margin: 0 auto 36px;
+            border-radius: 4px;
+            overflow: hidden;
+            box-shadow: 0 4px 24px rgba(0,0,0,0.5);
         }
         .viewer-stage {
             position: relative;
             width: 100%;
-            padding-top: 56.25%; /* 16:9 */
+            padding-top: 56.25%;
             overflow: hidden;
             background: #fff;
         }
@@ -62,7 +71,7 @@
             flex-direction: column;
             justify-content: center;
             align-items: center;
-            padding: 40px 48px;
+            padding: 44px 52px;
             opacity: 0;
             pointer-events: none;
             transition: opacity 0.25s ease;
@@ -73,15 +82,34 @@
         }
         .slide.active { opacity: 1; pointer-events: auto; }
 
+        /* Dark slides */
+        .slide.dark {
+            background: #0d1b2a;
+            color: #fff;
+        }
+        .slide.dark h2 { color: #fff; }
+        .slide.dark p { color: #ccd; }
+        .slide.dark .attribution { color: #99a; }
+        .slide.dark .objection .q { color: #e8c170; }
+        .slide.dark .objection .a { color: #bbc; }
+        .slide.dark .roi-card { background: #162638; border-color: #2a3f58; }
+        .slide.dark .roi-card .industry { color: #8899aa; }
+        .slide.dark .roi-card .multiple { color: #99aabb; }
+        .slide.dark .option strong { color: #fff; }
+        .slide.dark .option p { color: #99a; }
+        .slide.dark .step-text span { color: #8899aa; }
+
         /* Slide typography */
         .slide h1 { font-size: 30px; font-weight: 900; line-height: 1.25; margin-bottom: 16px; max-width: 640px; }
-        .slide h2 { font-size: 24px; font-weight: 800; line-height: 1.3; margin-bottom: 14px; max-width: 640px; }
+        .slide h2 { font-size: 24px; font-weight: 800; line-height: 1.3; margin-bottom: 14px; max-width: 640px; color: #1a1a1a; }
         .slide p { font-size: 16px; line-height: 1.55; margin-bottom: 10px; max-width: 580px; }
-        .big-num { font-size: 60px; font-weight: 900; color: #2bbcb3; line-height: 1; margin-bottom: 8px; }
+        .gold { color: #c9a84c; }
         .teal { color: #2bbcb3; }
+        .big-num { font-size: 58px; font-weight: 900; color: #c9a84c; line-height: 1; margin-bottom: 8px; }
         .quote { font-size: 22px; font-weight: 700; font-style: italic; max-width: 580px; margin-bottom: 12px; line-height: 1.35; }
         .attribution { font-size: 14px; font-weight: 600; color: #888; margin-bottom: 8px; }
-        .result { font-size: 18px; font-weight: 700; color: #2bbcb3; margin-bottom: 12px; }
+        .result { font-size: 18px; font-weight: 700; color: #c9a84c; margin-bottom: 12px; }
+        .hint { font-size: 11px; color: #bbb; position: absolute; bottom: 12px; left: 50%; transform: translateX(-50%); white-space: nowrap; }
 
         .x-list, .check-list { list-style: none; text-align: left; max-width: 480px; margin: 14px auto; padding: 0; }
         .x-list li, .check-list li { font-size: 17px; padding: 6px 0; }
@@ -90,14 +118,14 @@
 
         .roi-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin: 16px auto; max-width: 520px; }
         .roi-card { background: #f7f8fa; border: 1px solid #e8e8e8; border-radius: 6px; padding: 14px; text-align: center; }
-        .roi-card .company { font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 1.5px; color: #2bbcb3; }
+        .roi-card .company { font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 1.5px; color: #c9a84c; }
         .roi-card .industry { font-size: 11px; color: #888; margin-bottom: 4px; }
-        .roi-card .return { font-size: 24px; font-weight: 900; color: #2bbcb3; }
+        .roi-card .return { font-size: 24px; font-weight: 900; color: #c9a84c; }
         .roi-card .multiple { font-size: 12px; font-weight: 700; color: #555; }
 
         .steps { text-align: left; max-width: 480px; margin: 14px auto; }
         .step { display: flex; gap: 10px; margin-bottom: 12px; align-items: flex-start; }
-        .step-num { background: #2bbcb3; color: #fff; width: 26px; height: 26px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 800; font-size: 12px; flex-shrink: 0; }
+        .step-num { background: #c9a84c; color: #0d1b2a; width: 26px; height: 26px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 800; font-size: 12px; flex-shrink: 0; }
         .step-text strong { font-size: 14px; display: block; }
         .step-text span { font-size: 13px; color: #888; }
 
@@ -110,59 +138,43 @@
         .objection .q { font-size: 15px; font-weight: 700; color: #cc0000; margin-bottom: 3px; }
         .objection .a { font-size: 14px; color: #555; }
 
-        /* BOTTOM TOOLBAR — mimics Google Slides player */
+        /* BOTTOM TOOLBAR */
         .toolbar {
             display: flex;
             align-items: center;
             justify-content: space-between;
-            padding: 6px 12px;
-            background: #323232;
-            border-top: 1px solid #444;
+            padding: 8px 14px;
+            background: #1a1a1a;
         }
         .toolbar-left {
             display: flex;
             align-items: center;
-            gap: 8px;
+            gap: 6px;
         }
         .toolbar-btn {
             background: none;
             border: none;
-            color: #ccc;
+            color: #aaa;
             cursor: pointer;
-            font-size: 16px;
+            font-size: 14px;
             padding: 4px 8px;
             border-radius: 3px;
             line-height: 1;
         }
         .toolbar-btn:hover { color: #fff; background: rgba(255,255,255,0.1); }
         .toolbar-counter {
-            color: #ccc;
+            color: #aaa;
             font-size: 12px;
             font-family: Arial, sans-serif;
-        }
-        .toolbar-right {
-            display: flex;
-            align-items: center;
-            gap: 6px;
-        }
-
-        /* HINT TEXT */
-        .hint {
-            font-size: 11px;
-            color: #aaa;
-            position: absolute;
-            bottom: 10px;
-            left: 50%;
-            transform: translateX(-50%);
-            white-space: nowrap;
+            margin-left: 4px;
         }
 
         /* CTA */
         .cta-btn {
             display: inline-block;
-            background: #2bbcb3;
-            color: #fff;
-            padding: 16px 48px;
+            background: #c9a84c;
+            color: #0a0f1a;
+            padding: 18px 52px;
             border-radius: 5px;
             text-decoration: none;
             font-weight: 800;
@@ -171,18 +183,18 @@
             letter-spacing: 1px;
             transition: background 0.2s, transform 0.15s;
         }
-        .cta-btn:hover { background: #239e96; transform: translateY(-1px); }
-        .cta-sub { font-size: 11px; color: #999; margin-top: 8px; font-style: italic; }
+        .cta-btn:hover { background: #d4b65e; transform: translateY(-1px); }
+        .cta-sub { font-size: 11px; color: #667; margin-top: 10px; font-style: italic; }
 
         /* FOOTER */
         footer {
             text-align: center;
             padding: 28px 20px;
-            border-top: 1px solid #eee;
+            border-top: 1px solid #1a2538;
             margin-top: 36px;
         }
-        footer p { font-size: 11px; color: #999; }
-        footer a { color: #2bbcb3; text-decoration: none; }
+        footer p { font-size: 11px; color: #556; }
+        footer a { color: #c9a84c; text-decoration: none; }
 
         @media (max-width: 640px) {
             .headline { font-size: 22px; }
@@ -193,7 +205,8 @@
             .big-num { font-size: 42px; }
             .quote { font-size: 18px; }
             .roi-grid { grid-template-columns: 1fr; }
-            .cta-btn { padding: 14px 32px; font-size: 15px; }
+            .cta-btn { padding: 14px 36px; font-size: 15px; }
+            .logo img { height: 50px; }
         }
     </style>
 </head>
@@ -202,12 +215,14 @@
 <div class="page">
 
     <div class="logo">
-        <img src="https://fourroomsmastermind.com/wp-content/uploads/2024/04/Four-Rooms-Mastermind-Logo-Horizontal.png"
+        <img src="https://fourroomsmastermind.com/wp-content/uploads/2022/11/logo-FR-w-v2.png"
              alt="Four Rooms Mastermind"
              onerror="this.onerror=null;this.src='https://assets.cdn.filesafe.space/fdAqsag8cBj7Lvv6NUlk/media/69fb1b380394c9850351a1a4.jpg';">
     </div>
 
-    <h1 class="headline">Discover How Four Rooms Sponsors Are<br>Generating 4x-13x ROI From A Single Event</h1>
+    <h1 class="headline">Discover How Four Rooms Sponsors Are Generating <span>4x-13x ROI</span> From A Single Event</h1>
+
+    <p class="subhead">Click through the slides below or press the arrow keys</p>
 
     <div class="viewer">
         <div class="viewer-stage">
@@ -215,15 +230,15 @@
                 <h1>You're About To See Something No Other Event Offers.</h1>
                 <p>We don't give you a booth and wish you luck. We interview every attendee. We learn what they need. Then we introduce them to you.</p>
                 <p style="font-weight:700; font-size:18px;">Strategically. Intentionally. Before the event even starts.</p>
-                <div class="hint">Click to continue</div>
+                <div class="hint">Click anywhere to continue &rarr;</div>
             </div>
-            <div class="slide" data-i="1">
+            <div class="slide dark" data-i="1">
                 <div class="big-num">200-250</div>
                 <h2>Verified Founders Per Event</h2>
                 <p>Average business: <strong>8 figures</strong>. Every person verified their revenue before buying a ticket.</p>
                 <p><strong>Every single one is a founder or C-suite. Zero salespeople.</strong></p>
                 <p>44% female. 56% male. One of the highest female attendee ratios in the industry.</p>
-                <p class="teal" style="font-weight:700;">1,700+ companies have walked away with partnerships, clients, and ROI.</p>
+                <p class="gold" style="font-weight:700;">1,700+ companies have walked away with partnerships, clients, and ROI.</p>
             </div>
             <div class="slide" data-i="2">
                 <h2>The Caliber Of People In This Room</h2>
@@ -232,11 +247,11 @@
                 <p>Members like Miki Agrawal, Eddie Maalouf, Molly Pittman, David Bayer, JJ Virgin.</p>
                 <p>When you sponsor this event, you're in the room with the people who built these companies.</p>
             </div>
-            <div class="slide" data-i="3">
-                <h1>This isn't a marketing expense.</h1>
-                <p style="font-size:20px; font-weight:700; color:#2bbcb3;">It's a client acquisition machine.</p>
+            <div class="slide dark" data-i="3">
+                <h1 style="color:#fff;">This isn't a marketing expense.</h1>
+                <p style="font-size:20px; font-weight:700; color:#c9a84c;">It's a client acquisition machine.</p>
                 <p>One curated introduction can be worth more than your entire ad budget this year.</p>
-                <p style="font-weight:700;">And we don't leave it to chance.</p>
+                <p style="font-weight:700; color:#fff;">And we don't leave it to chance.</p>
             </div>
             <div class="slide" data-i="4">
                 <h2>How Other Events Work</h2>
@@ -257,14 +272,14 @@
                 </ul>
                 <p style="font-weight:700; font-size:17px; margin-top:10px;">You're not outside hoping. You're inside connecting.</p>
             </div>
-            <div class="slide" data-i="6">
-                <h2>Sponsors Start Making Money<br>Before The Event.</h2>
+            <div class="slide dark" data-i="6">
+                <h2 style="color:#fff;">Sponsors Start Making Money<br>Before The Event.</h2>
                 <p>The earlier you sponsor, the earlier we connect you.</p>
-                <p>Someone says "I need a payment processor" — if you're our payment sponsor, we connect them to you. <strong>That day.</strong></p>
-                <p style="font-weight:700;">Our sponsors make money before anyone sets foot in the venue.</p>
+                <p>Someone says "I need a payment processor" — if you're our payment sponsor, we connect them to you. <strong style="color:#c9a84c;">That day.</strong></p>
+                <p style="font-weight:700; color:#fff;">Our sponsors make money before anyone sets foot in the venue.</p>
             </div>
-            <div class="slide" data-i="7">
-                <h2>Average Sponsor ROI: <span class="teal">4x Return</span></h2>
+            <div class="slide dark" data-i="7">
+                <h2 style="color:#fff;">Average Sponsor ROI: <span class="gold">4x Return</span></h2>
                 <div class="roi-grid">
                     <div class="roi-card"><div class="company">SphereRocket</div><div class="industry">VA Staffing</div><div class="return">$420K</div><div class="multiple">$77K in · 5.5x</div></div>
                     <div class="roi-card"><div class="company">Maropost</div><div class="industry">Email Platform</div><div class="return">$1M+</div><div class="multiple">$77K in · 13x</div></div>
@@ -283,20 +298,20 @@
                 <div class="result">$77K invested. $1,000,000+ returned. 13x ROI.</div>
                 <p>Vik didn't get lucky. We matched him with the right people.</p>
             </div>
-            <div class="slide" data-i="10">
-                <div class="quote">"$77K in. $420K out."</div>
+            <div class="slide dark" data-i="10">
+                <div class="quote" style="color:#fff;">"$77K in. $420K out."</div>
                 <div class="attribution">— SphereRocket (VA Staffing)</div>
                 <div class="result">5.5x return on investment.</div>
                 <p>We filled their pipeline with qualified buyers before they unpacked their booth.</p>
             </div>
-            <div class="slide" data-i="11">
-                <h2>It All Depends On The Access You Want.</h2>
+            <div class="slide dark" data-i="11">
+                <h2 style="color:#fff;">It All Depends On The Access You Want.</h2>
                 <div class="options">
                     <div class="option"><strong>1. Booth</strong><p>Your brand in front of every attendee.</p></div>
                     <div class="option"><strong>2. Expert Tables</strong><p>You host. We fill the seats with people who need you.</p></div>
                     <div class="option"><strong>3. Speaking</strong><p>Stage time. Authority positioning.</p></div>
                 </div>
-                <p style="color:#2bbcb3; font-weight:700;">Every option includes curated introductions. That's the baseline.</p>
+                <p style="color:#c9a84c; font-weight:700;">Every option includes curated introductions. That's the baseline.</p>
             </div>
             <div class="slide" data-i="12">
                 <h2>The Matchmaking Process</h2>
@@ -313,8 +328,8 @@
                 <div class="attribution">— Karen Donaldson, Confidence &amp; Peak Performance Coach</div>
                 <div class="result">One event. One connection. $50K.</div>
             </div>
-            <div class="slide" data-i="14">
-                <h2>Let's Address The Obvious.</h2>
+            <div class="slide dark" data-i="14">
+                <h2 style="color:#fff;">Let's Address The Obvious.</h2>
                 <div class="objection"><div class="q">"The event is months away."</div><div class="a">Good. More time for us to connect you. Our sponsors generate ROI before day one.</div></div>
                 <div class="objection"><div class="q">"How do I know it works for my business?"</div><div class="a">VA staffing. Email platforms. Payment processing. Coaching. If you serve 7-9 figure founders, this room is full of your buyers.</div></div>
                 <div class="objection"><div class="q">"I've sponsored events before. Didn't work."</div><div class="a">Because they gave you a booth and a prayer. We give you introductions. 92% renewal rate.</div></div>
@@ -330,11 +345,11 @@
                 <div class="result">20x return on investment.</div>
                 <p>He doesn't need another event. But he keeps showing up. He told Kimi he'll never leave.</p>
             </div>
-            <div class="slide" data-i="17">
-                <h1>November 12-15, 2026</h1>
-                <p style="color:#2bbcb3; font-size:20px; font-weight:700;">San Diego, California</p>
+            <div class="slide dark" data-i="17">
+                <h1 style="color:#fff;">November 12-15, 2026</h1>
+                <p style="color:#c9a84c; font-size:20px; font-weight:700;">San Diego, California</p>
                 <p>Sponsor spots are limited. We cap it to protect the experience.</p>
-                <p style="font-weight:700;">Let's figure out which option makes sense for your business.</p>
+                <p style="font-weight:700; color:#fff;">Let's figure out which option makes sense for your business.</p>
             </div>
         </div>
         <div class="toolbar">
@@ -342,9 +357,6 @@
                 <button class="toolbar-btn" id="pb" onclick="prev()">&#9664;</button>
                 <button class="toolbar-btn" id="nb" onclick="next()">&#9654;</button>
                 <span class="toolbar-counter" id="ct">1 / 18</span>
-            </div>
-            <div class="toolbar-right">
-                <button class="toolbar-btn" onclick="toggleFullscreen()" title="Fullscreen">&#x26F6;</button>
             </div>
         </div>
     </div>
@@ -392,12 +404,6 @@ vs.addEventListener('touchend', e => {
     const d = tx - e.changedTouches[0].screenX;
     if (Math.abs(d) > 50) { d > 0 ? next() : prev(); }
 });
-
-function toggleFullscreen() {
-    const v = document.querySelector('.viewer');
-    if (document.fullscreenElement) { document.exitFullscreen(); }
-    else { v.requestFullscreen(); }
-}
 
 go(0);
 </script>
