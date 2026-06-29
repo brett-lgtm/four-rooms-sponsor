@@ -138,36 +138,65 @@
         .objection .q { font-size: 15px; font-weight: 700; color: #cc0000; margin-bottom: 3px; }
         .objection .a { font-size: 14px; color: #555; }
 
-        /* BOTTOM TOOLBAR */
+        /* BOTTOM TOOLBAR — Google Slides style */
         .toolbar {
             display: flex;
             align-items: center;
             justify-content: space-between;
-            padding: 8px 14px;
-            background: #1a1a1a;
+            padding: 6px 12px;
+            background: #f1f1f1;
+            border-top: 1px solid #ddd;
         }
         .toolbar-left {
             display: flex;
             align-items: center;
-            gap: 6px;
+            gap: 2px;
         }
         .toolbar-btn {
             background: none;
             border: none;
-            color: #aaa;
+            color: #5f6368;
             cursor: pointer;
-            font-size: 14px;
-            padding: 4px 8px;
-            border-radius: 3px;
+            font-size: 18px;
+            padding: 6px 10px;
+            border-radius: 50%;
             line-height: 1;
+            transition: background 0.15s;
         }
-        .toolbar-btn:hover { color: #fff; background: rgba(255,255,255,0.1); }
+        .toolbar-btn:hover { background: rgba(0,0,0,0.08); }
         .toolbar-counter {
-            color: #aaa;
+            color: #5f6368;
+            font-size: 14px;
+            font-family: Arial, sans-serif;
+            margin: 0 4px;
+            min-width: 20px;
+            text-align: center;
+        }
+        .toolbar-right {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .toolbar-label {
+            color: #5f6368;
             font-size: 12px;
             font-family: Arial, sans-serif;
-            margin-left: 4px;
+            display: flex;
+            align-items: center;
+            gap: 6px;
         }
+        .toolbar-label svg { width: 18px; height: 18px; fill: #5f6368; }
+        .toolbar-dots {
+            background: none;
+            border: none;
+            color: #5f6368;
+            cursor: pointer;
+            font-size: 18px;
+            padding: 6px;
+            border-radius: 50%;
+            line-height: 1;
+        }
+        .toolbar-dots:hover { background: rgba(0,0,0,0.08); }
 
         /* CTA */
         .cta-btn {
@@ -230,7 +259,7 @@
                 <h1>You're About To See Something No Other Event Offers.</h1>
                 <p>We don't give you a booth and wish you luck. We interview every attendee. We learn what they need. Then we introduce them to you.</p>
                 <p style="font-weight:700; font-size:18px;">Strategically. Intentionally. Before the event even starts.</p>
-                <div class="hint">Click anywhere to continue &rarr;</div>
+                <div class="hint"><strong style="font-size:16px; color:#333;">Press The Right Arrow To Continue</strong></div>
             </div>
             <div class="slide dark" data-i="1">
                 <div class="big-num">200-250</div>
@@ -354,9 +383,16 @@
         </div>
         <div class="toolbar">
             <div class="toolbar-left">
-                <button class="toolbar-btn" id="pb" onclick="prev()">&#9664;</button>
-                <button class="toolbar-btn" id="nb" onclick="next()">&#9654;</button>
-                <span class="toolbar-counter" id="ct">1 / 18</span>
+                <button class="toolbar-btn" id="pb" onclick="prev()">&#8249;</button>
+                <span class="toolbar-counter" id="ct">1</span>
+                <button class="toolbar-btn" id="nb" onclick="next()">&#8250;</button>
+                <button class="toolbar-dots">&#8942;</button>
+            </div>
+            <div class="toolbar-right">
+                <span class="toolbar-label">
+                    <svg viewBox="0 0 24 24"><path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 16H5V5h14v14z"/></svg>
+                    Slides
+                </span>
             </div>
         </div>
     </div>
@@ -380,7 +416,7 @@ function go(n) {
     sl[c].classList.remove('active');
     c = Math.max(0, Math.min(n, tot - 1));
     sl[c].classList.add('active');
-    document.getElementById('ct').textContent = (c + 1) + ' / ' + tot;
+    document.getElementById('ct').textContent = (c + 1);
 }
 function next() { go(c + 1); }
 function prev() { go(c - 1); }
